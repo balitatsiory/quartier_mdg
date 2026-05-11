@@ -64,7 +64,7 @@
         function onMapClick(e) {
             popup
                 .setLatLng(e.latlng)
-                .setContent("Click coord " + e.latlng.toString())
+                .setContent("Click coord " + e.latlng.toString() + " ")
                 .openOn(map);
         }
         map.on('click', onMapClick);
@@ -118,9 +118,11 @@
             map.fitBounds(e.target.getBounds());
         }
         function onEachFeature(feature, L) {
-            //L.bindPopup("You clicked the map at " + L +" "+feature.properties.shapeName)
+            L.bindPopup("You clicked the map at " + feature.properties.shapeName)
             //L.bindPopup(L.toString())
-            
+
+            console.log(L)
+
             L.on({
                 mouseover: highlightFeature,
                 mouseout: resetHighlight,
@@ -151,8 +153,8 @@
 
         // method that we will use to update the control based on feature properties passed
         info.update = function (props) {
-            this._div.innerHTML = '<h4>US Population Density</h4>' + (props ?
-                '<b>' + props.shapeName + '</b><br />' + props.density + ' people / m<sup>2</sup>'
+            this._div.innerHTML = '<h4>Quartiers</h4>' + (props ?
+                '<b>' + props.shapeName + '</b>'
                 : 'Hover over a state');
         };
 
